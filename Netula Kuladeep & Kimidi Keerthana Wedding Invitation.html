@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Netula Kuladeep &amp; Kimidi Keerthana — Wedding Invitation</title>
+  
+  <!-- Google Fonts: Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FBF7F0',
+            blush: '#F8E8E8',
+            blushDeep: '#F2D8D8',
+            wine: '#6E1F2F',
+            wineDark: '#4B121E',
+            gold: '#D4AF37',
+            goldLight: '#F3E5AB',
+            goldDark: '#AA8219',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Montserrat', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --ivory: #FBF7F0;
+      --blush: #F8E8E8;
+      --wine: #6E1F2F;
+      --wine-dark: #4B121E;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--ivory);
+      color: var(--wine-dark);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #FBF7F0 0%, #F9ECEC 28%, #FBF7F0 55%, #F8E8E8 82%, #FBF7F0 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle Paper Grain Texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+      background-image: radial-gradient(rgba(110, 31, 47, 0.06) 1px, transparent 0);
+      background-size: 22px 22px;
+    }
+
+    /* Champagne Gold Metallic Shimmer Text */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #AA8219 0%, #E5C158 35%, #FFF2B2 50%, #D4AF37 70%, #997014 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: goldShine 6s linear infinite;
+    }
+
+    @keyframes goldShine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* 3D Book Opening Overlay */
+    #bookOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle at center, #FBEFEF 0%, #F2D6D8 65%, #E8C2C6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1), visibility 1.1s;
+      overflow: hidden;
+    }
+
+    #bookOverlay.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .book-stage {
+      perspective: 1800px;
+      width: min(84vw, 340px);
+      height: min(64vh, 490px);
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+      transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .book-stage.zooming {
+      transform: scale(1.38) translateY(-10px);
+    }
+
+    .book-body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 6px 18px 18px 6px;
+      box-shadow:
+        0 28px 55px -12px rgba(75, 18, 30, 0.48),
+        0 10px 20px -6px rgba(75, 18, 30, 0.3),
+        inset -4px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Inner Ivory First Page inside the 3D Book */
+    .book-inner-page {
+      position: absolute;
+      inset: 4px 6px 4px 10px;
+      background: linear-gradient(145deg, #FBF7F0 0%, #F6E9E6 100%);
+      border-radius: 4px 14px 14px 4px;
+      border: 1.5px solid rgba(212, 175, 55, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: inset 12px 0 24px rgba(110, 31, 47, 0.14);
+    }
+
+    /* 3D Front Velvet Cover */
+    .book-cover {
+      position: absolute;
+      inset: 0;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 1.45s cubic-bezier(0.32, 0.05, 0.18, 1);
+      border-radius: 6px 18px 18px 6px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(150, 46, 67, 0.65) 0%, transparent 60%),
+        linear-gradient(145deg, #7A2335 0%, #6E1F2F 48%, #4A111D 100%);
+      box-shadow:
+        inset 14px 0 22px rgba(255, 255, 255, 0.08),
+        inset -3px 0 8px rgba(0, 0, 0, 0.45),
+        4px 0 12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 20px;
+      backface-visibility: hidden;
+    }
+
+    /* Spine Ribbing Effect */
+    .book-cover::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 18px;
+      background: linear-gradient(90deg, rgba(25, 4, 9, 0.6) 0%, rgba(255, 225, 150, 0.15) 45%, rgba(30, 5, 10, 0.5) 100%);
+      border-radius: 6px 0 0 6px;
+    }
+
+    .book-cover.swing-open {
+      transform: rotateY(-165deg);
+    }
+
+    /* Gold Filigree Frame on Cover */
+    .cover-gold-frame {
+      width: 100%;
+      height: 100%;
+      border: 1.5px solid rgba(212, 175, 55, 0.85);
+      border-radius: 4px 12px 12px 4px;
+      padding: 16px 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: inset 0 0 0 4px rgba(110, 31, 47, 0.9), inset 0 0 0 5px rgba(212, 175, 55, 0.45);
+    }
+
+    /* Ambient Swinging Marigold Strings */
+    @keyframes marigoldSway {
+      0%, 100% { transform: rotate(-2.5deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+
+    .marigold-garland {
+      transform-origin: top center;
+      animation: marigoldSway 5.5s ease-in-out infinite;
+    }
+    .marigold-garland-delay {
+      transform-origin: top center;
+      animation: marigoldSway 6.4s ease-in-out infinite reverse;
+    }
+
+    /* Parallax & Corner Roses */
+    .corner-rose {
+      transition: transform 0.25s ease-out;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    /* Pull-to-Reveal Scroll Mechanics */
+    .scroll-parchment {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform-origin: top center;
+      transition:
+        max-height 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.75s ease,
+        padding 0.9s ease;
+    }
+
+    .scroll-parchment.unrolled {
+      max-height: 540px;
+      opacity: 1;
+      padding-top: 1.75rem;
+      padding-bottom: 1.75rem;
+    }
+
+    @keyframes tasselSwing {
+      0%, 100% { transform: rotate(-4deg) translateY(0px); }
+      50% { transform: rotate(4deg) translateY(5px); }
+    }
+
+    .tassel-handle {
+      transform-origin: top center;
+      animation: tasselSwing 2.6s ease-in-out infinite;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+    }
+    .tassel-handle:active {
+      cursor: grabbing;
+      animation: none;
+    }
+
+    @keyframes fingerPullHint {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+      50% { transform: translateY(12px) scale(0.94); opacity: 1; }
+    }
+
+    .finger-hint {
+      animation: fingerPullHint 1.8s ease-in-out infinite;
+    }
+
+    /* 3D Swipeable Carousel */
+    .carousel-viewport {
+      perspective: 1200px;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      padding: 0 0.5rem;
+      transition: transform 0.55s ease, opacity 0.55s ease;
+    }
+
+    /* Reception Twinkling Sparkles */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+    .sparkle-dot {
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    /* Map Animated Route Dash */
+    @keyframes dashRoute {
+      to { stroke-dashoffset: -36; }
+    }
+    .animated-route {
+      stroke-dasharray: 6 6;
+      animation: dashRoute 1.8s linear infinite;
+    }
+
+    /* Pause animations when off-screen for mobile battery & 60fps smoothness */
+    .paused-anim * {
+      animation-play-state: paused !important;
+    }
+
+    /* Falling Petals Canvas */
+    #petalCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 45;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-wine selection:text-ivory">
+
+  <!-- Hidden Audio Track (Relative path for Netlify ZIP handoff + Web Audio gentle chime fallback) -->
+  <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+
+  <!-- Falling Rose Petals & Celebration Confetti Canvas -->
+  <canvas id="petalCanvas"></canvas>
+
+  <!-- Floating Music Control Pill (Shown after book opens) -->
+  <button
+    id="musicToggleBtn"
+    type="button"
+    aria-label="Toggle Wedding Music"
+    class="fixed top-4 right-4 z-50 hidden items-center gap-2 rounded-full bg-wine/90 px-3.5 py-2 text-xs font-medium text-goldLight shadow-lg backdrop-blur-md border border-gold/50 transition hover:bg-wineDark active:scale-95"
+  >
+    <span id="musicEqualizer" class="flex items-end gap-0.5 h-3.5">
+      <span class="w-0.5 bg-gold rounded-full h-2 animate-pulse"></span>
+      <span class="w-0.5 bg-gold rounded-full h-3.5 animate-bounce"></span>
+      <span class="w-0.5 bg-gold rounded-full h-1.5 animate-pulse"></span>
+    </span>
+    <span id="musicLabel">Playing</span>
+  </button>
+
+  <!-- Toast Notification (For Copy Address & Calendar Download) -->
+  <div
+    id="toastBanner"
+    role="status"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 rounded-full bg-wineDark text-ivory border border-gold/60 px-5 py-2.5 text-xs font-medium shadow-2xl flex items-center gap-2 whitespace-nowrap"
+  >
+    <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="toastText">Copied to clipboard!</span>
+  </div>
+
+  <!-- =====================================================================
+       SECTION 1: OPENING 3D WINE-VELVET INVITATION BOOK
+       ===================================================================== -->
+  <div id="bookOverlay" aria-label="Wedding Invitation Book Cover">
+    <!-- Blurred Foreground & Background 3D Roses (Parallax) -->
+    <div class="parallax-rose absolute -top-8 -left-8 w-44 h-44 opacity-55 blur-[2px] pointer-events-none" data-speed="0.04">
+      <svg viewBox="0 0 200 200" class="w-full h-full">
+        <defs>
+          <radialGradient id="roseGrad1" cx="40%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#D97B84" />
+            <stop offset="60%" stop-color="#9E3344" />
+            <stop offset="100%" stop-color="#5B1624" />
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="78" fill="url(#roseGrad1)" opacity="0.75" />
+        <path d="M100 30 C140 30, 170 65, 165 105 C160 145, 125 170, 90 165 C55 160, 30 130, 35 90 C40 55, 68 30, 100 30 Z" fill="#B84756" opacity="0.65" />
+        <path d="M100 52 C126 52, 145 72, 142 100 C139 128, 118 144, 95 142 C72 139, 55 118, 58 95 C61 72, 78 52, 100 52 Z" fill="#822233" opacity="0.75" />
+        <path d="M100 72 C114 72, 125 84, 123 100 C121 116, 108 125, 96 123 C84 121, 74 110, 76 96 C78 82, 88 72, 100 72 Z" fill="#F2A6AE" opacity="0.55" />
+      </svg>
+    </div>
+
+    <div class="parallax-rose absolute -bottom-10 -right-8 w-52 h-52 opacity-60 blur-[1.5px] pointer-events-none" data-speed="-0.05">
+      <svg viewBox="0 0 200 200" class="w-full h-full">
+        <circle cx="100" cy="100" r="82" fill="url(#roseGrad1)" opacity="0.8" />
+        <path d="M100 34 C138 34, 166 66, 162 104 C158 142, 124 166, 92 162 C60 158, 34 128, 38 92 C42 58, 70 34, 100 34 Z" fill="#C45362" opacity="0.6" />
+        <path d="M100 58 C122 58, 140 76, 138 100 C136 124, 116 140, 96 138 C76 136, 60 116, 62 96 C64 76, 80 58, 100 58 Z" fill="#6E1F2F" opacity="0.7" />
+      </svg>
+    </div>
+
+    <div class="parallax-rose absolute top-14 -right-6 w-28 h-28 opacity-40 blur-[3px] pointer-events-none" data-speed="0.03">
+      <svg viewBox="0 0 200 200" class="w-full h-full">
+        <circle cx="100" cy="100" r="75" fill="#C86472" />
+      </svg>
+    </div>
+
+    <!-- Preloader State -->
+    <div id="bookLoader" class="flex flex-col items-center gap-3 z-20 transition-opacity duration-500">
+      <div class="w-10 h-10 rounded-full border-2 border-wine/20 border-t-wine animate-spin"></div>
+      <p class="text-xs uppercase tracking-[0.25em] text-wine font-medium">Preparing Invitation...</p>
+    </div>
+
+    <!-- Interactive 3D Book -->
+    <div id="bookInteractiveWrapper" class="hidden flex-col items-center z-20">
+      <div id="bookStage" class="book-stage" role="button" tabindex="0" aria-label="Tap the book to open wedding invitation">
+        <div class="book-body">
+          <!-- Inner First Page Preview visible as cover swings open -->
+          <div class="book-inner-page">
+            <p class="text-[10px] uppercase tracking-[0.25em] text-wine/70 mb-2">॥ Sri Ganeshaya Namah ॥</p>
+            <h2 class="font-serif text-xl font-bold text-wine">Netula Kuladeep</h2>
+            <span class="font-serif italic text-goldDark text-lg my-0.5">&amp;</span>
+            <h2 class="font-serif text-xl font-bold text-wine">Kimidi Keerthana</h2>
+            <p class="text-[11px] text-wine/80 mt-3 font-medium">23rd December 2026</p>
+          </div>
+
+          <!-- Front Wine-Velvet Cover -->
+          <div id="bookCover" class="book-cover">
+            <div class="cover-gold-frame">
+              <!-- Top Sacred Invocation -->
+              <div class="text-center">
+                <p class="text-[9px] uppercase tracking-[0.28em] text-goldLight/90 font-medium">॥ Shubh Vivah ॥</p>
+              </div>
+
+              <!-- Gold Ganesh Ji Emblem -->
+              <div class="flex flex-col items-center my-1">
+                <div class="w-20 h-20 rounded-full border border-gold/60 bg-wineDark/60 flex items-center justify-center shadow-inner p-2">
+                  <svg viewBox="0 0 120 120" class="w-full h-full text-gold" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Tilak / Crown -->
+                    <path d="M48 24 Q60 12 72 24" stroke-width="2.5" />
+                    <path d="M52 29 Q60 20 68 29" stroke-width="2" />
+                    <circle cx="60" cy="34" r="2.2" fill="currentColor" />
+                    <!-- Ears -->
+                    <path d="M42 42 C24 38, 22 66, 40 68" stroke-width="2.3" />
+                    <path d="M78 42 C96 38, 98 66, 80 68" stroke-width="2.3" />
+                    <!-- Forehead & Eyes -->
+                    <path d="M43 44 Q60 35 77 44" stroke-width="2.3" />
+                    <path d="M47 50 Q52 48 55 50" stroke-width="2" />
+                    <path d="M65 50 Q68 48 73 50" stroke-width="2" />
+                    <!-- Curved Trunk -->
+                    <path d="M56 54 C56 72, 48 82, 38 78 C33 76, 34 70, 39 71" stroke-width="3" />
+                    <!-- Tusk -->
+                    <path d="M65 58 L71 64" stroke-width="2.2" />
+                    <!-- Lotus Base -->
+                    <path d="M34 92 Q60 104 86 92" stroke-width="2" />
+                    <path d="M42 97 Q60 108 78 97" stroke-width="1.8" />
+                  </svg>
+                </div>
+
+                <!-- Ornate Monogram -->
+                <div class="mt-4 text-center">
+                  <span class="font-serif italic text-3xl sm:text-4xl font-semibold gold-gradient-text tracking-wide">
+                    K &amp; K
+                  </span>
+                  <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-2.5"></div>
+                  <p class="font-serif text-base sm:text-lg text-ivory tracking-wide">
+                    Kuladeep <span class="text-gold italic">&amp;</span> Keerthana
+                  </p>
+                </div>
+              </div>
+
+              <!-- Bottom Date & Emblem -->
+              <div class="text-center">
+                <p class="text-[10px] uppercase tracking-[0.24em] text-goldLight/90 font-medium">
+                  23 • 12 • 2026
+                </p>
+                <p class="text-[9px] tracking-[0.18em] text-ivory/70 mt-0.5">
+                  Wedding Invitation
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tap Prompt Below Book -->
+      <button
+        id="tapBookBtn"
+        type="button"
+        class="mt-7 flex items-center gap-2.5 rounded-full bg-wine text-goldLight px-6 py-3 text-xs uppercase tracking-[0.22em] font-semibold shadow-xl border border-gold/50 animate-pulse hover:bg-wineDark transition"
+      >
+        <span>Tap the book to open</span>
+        <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MAIN CONTINUOUS INVITATION PAGE
+       ===================================================================== -->
+  <main id="mainInvitation" class="relative z-10 max-w-lg mx-auto overflow-hidden">
+
+    <!-- Top Swinging Marigold Garlands (Left & Right Corners) -->
+    <div class="pointer-events-none absolute top-0 left-0 right-0 flex justify-between px-2 z-20">
+      <!-- Left Marigold String -->
+      <svg class="marigold-garland w-24 h-28 sm:w-28 sm:h-32" viewBox="0 0 100 130" fill="none">
+        <line x1="22" y1="0" x2="22" y2="95" stroke="#B8860B" stroke-width="1.5" />
+        <line x1="52" y1="0" x2="52" y2="72" stroke="#B8860B" stroke-width="1.5" />
+        <line x1="80" y1="0" x2="80" y2="48" stroke="#B8860B" stroke-width="1.5" />
+        <!-- Marigold Flowers -->
+        <circle cx="22" cy="22" r="8" fill="#F59E0B" />
+        <circle cx="22" cy="22" r="4" fill="#D97706" />
+        <circle cx="22" cy="48" r="9" fill="#FBBF24" />
+        <circle cx="22" cy="48" r="4.5" fill="#B45309" />
+        <circle cx="22" cy="76" r="8.5" fill="#F59E0B" />
+        <polygon points="22,92 16,106 28,106" fill="#15803D" />
+        <circle cx="22" cy="112" r="4.5" fill="#DC2626" />
+
+        <circle cx="52" cy="20" r="7.5" fill="#FBBF24" />
+        <circle cx="52" cy="46" r="8.5" fill="#F59E0B" />
+        <polygon points="52,64 46,77 58,77" fill="#15803D" />
+        <circle cx="52" cy="83" r="4" fill="#DC2626" />
+
+        <circle cx="80" cy="22" r="7" fill="#F59E0B" />
+        <polygon points="80,38 75,50 85,50" fill="#15803D" />
+      </svg>
+
+      <!-- Right Marigold String -->
+      <svg class="marigold-garland-delay w-24 h-28 sm:w-28 sm:h-32" viewBox="0 0 100 130" fill="none">
+        <line x1="20" y1="0" x2="20" y2="48" stroke="#B8860B" stroke-width="1.5" />
+        <line x1="48" y1="0" x2="48" y2="72" stroke="#B8860B" stroke-width="1.5" />
+        <line x1="78" y1="0" x2="78" y2="95" stroke="#B8860B" stroke-width="1.5" />
+
+        <circle cx="20" cy="22" r="7" fill="#F59E0B" />
+        <polygon points="20,38 15,50 25,50" fill="#15803D" />
+
+        <circle cx="48" cy="20" r="7.5" fill="#FBBF24" />
+        <circle cx="48" cy="46" r="8.5" fill="#F59E0B" />
+        <polygon points="48,64 42,77 54,77" fill="#15803D" />
+        <circle cx="48" cy="83" r="4" fill="#DC2626" />
+
+        <circle cx="78" cy="22" r="8" fill="#F59E0B" />
+        <circle cx="78" cy="48" r="9" fill="#FBBF24" />
+        <circle cx="78" cy="76" r="8.5" fill="#F59E0B" />
+        <polygon points="78,92 72,106 84,106" fill="#15803D" />
+        <circle cx="78" cy="112" r="4.5" fill="#DC2626" />
+      </svg>
+    </div>
+
+    <!-- =====================================================================
+         SECTION 2: FIRST PAGE (EXACTLY 100dvh, CENTERED, NEVER CUT)
+         ===================================================================== -->
+    <section
+      id="heroSection"
+      class="min-h-[100dvh] flex flex-col items-center justify-between px-6 pt-14 pb-6 text-center relative"
+    >
+      <!-- Top Gold Ganesh Ji Medallion -->
+      <div class="flex flex-col items-center mt-2">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-b from-ivory to-blush border-2 border-gold shadow-md flex items-center justify-center p-2">
+          <svg viewBox="0 0 120 120" class="w-full h-full text-wine" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M48 24 Q60 12 72 24" stroke="#D4AF37" stroke-width="3" />
+            <path d="M52 29 Q60 20 68 29" stroke="#D4AF37" stroke-width="2.2" />
+            <circle cx="60" cy="34" r="2.5" fill="#D4AF37" />
+            <path d="M42 42 C24 38, 22 66, 40 68" stroke-width="2.5" />
+            <path d="M78 42 C96 38, 98 66, 80 68" stroke-width="2.5" />
+            <path d="M43 44 Q60 35 77 44" stroke-width="2.5" />
+            <path d="M47 50 Q52 48 55 50" stroke-width="2.2" />
+            <path d="M65 50 Q68 48 73 50" stroke-width="2.2" />
+            <path d="M56 54 C56 72, 48 82, 38 78 C33 76, 34 70, 39 71" stroke-width="3.2" />
+            <path d="M65 58 L71 64" stroke="#D4AF37" stroke-width="2.5" />
+            <path d="M34 92 Q60 104 86 92" stroke="#D4AF37" stroke-width="2.2" />
+          </svg>
+        </div>
+        <span class="text-[10px] uppercase tracking-[0.28em] text-goldDark font-semibold mt-2.5">
+          ॥ Sri Ganeshaya Namah ॥
+        </span>
+      </div>
+
+      <!-- Center Couple & Parents Block -->
+      <div class="my-auto py-3 flex flex-col items-center max-w-md">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-wine/75 font-medium mb-3">
+          Together with their families
+        </p>
+
+        <!-- Groom -->
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-wine tracking-tight leading-tight">
+          Netula Kuladeep
+        </h1>
+        <p class="text-xs sm:text-sm text-wineDark/80 mt-1.5 leading-relaxed max-w-xs">
+          Son of <span class="font-semibold text-wine">Sri Netula Venkata Srinivasa Rao</span><br />
+          &amp; <span class="font-semibold text-wine">Smt. Anuradha</span>
+        </p>
+
+        <!-- Ornate Gold Ampersand -->
+        <div class="flex items-center gap-3 my-3.5 w-48">
+          <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gold"></div>
+          <span class="font-serif italic text-3xl text-goldDark font-semibold">&amp;</span>
+          <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold"></div>
+        </div>
+
+        <!-- Bride -->
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-wine tracking-tight leading-tight">
+          Kimidi Keerthana
+        </h2>
+        <p class="text-xs sm:text-sm text-wineDark/80 mt-1.5 leading-relaxed max-w-xs">
+          Daughter of <span class="font-semibold text-wine">Sri Kimidi Venkataramana</span><br />
+          &amp; <span class="font-semibold text-wine">Smt. Laxmi</span>
+        </p>
+
+        <!-- Invitation Line -->
+        <p class="text-xs sm:text-sm text-wineDark/85 mt-5 leading-relaxed font-normal max-w-sm">
+          Cordially invite your gracious presence and blessings as they unite in the sacred bond of marriage.
+        </p>
+      </div>
+
+      <!-- Bottom Animated Scroll-Down Arrow -->
+      <a
+        href="#saveTheDateSection"
+        aria-label="Scroll down to Save the Date"
+        class="flex flex-col items-center gap-1 text-goldDark hover:text-wine transition pt-1"
+      >
+        <span class="text-[10px] uppercase tracking-[0.24em] font-semibold">Scroll to Explore</span>
+        <div class="w-8 h-8 rounded-full border border-gold/60 bg-ivory/80 flex items-center justify-center animate-bounce shadow-sm">
+          <svg class="w-4 h-4 text-wine" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3: SAVE THE DATE (PULL-TO-REVEAL GOLDEN SCROLL + COUNTDOWN)
+         ===================================================================== -->
+    <section id="saveTheDateSection" class="px-5 py-12 relative">
+      <div class="text-center mb-6">
+        <p class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Auspicious Union</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wine mt-1">Save The Date</h2>
+      </div>
+
+      <!-- Interactive Golden Rod & Unrolling Parchment Scroll -->
+      <div class="relative max-w-sm mx-auto">
+        <!-- Top Golden Finial Rod -->
+        <div class="relative z-20 flex items-center justify-between">
+          <!-- Left Finial Knob -->
+          <div class="w-5 h-5 rounded-full bg-gradient-to-br from-goldLight via-gold to-goldDark shadow-md border border-amber-900/20"></div>
+          <!-- Golden Cylindrical Bar -->
+          <div class="flex-1 h-3.5 bg-gradient-to-b from-goldLight via-gold to-goldDark shadow-md rounded-sm"></div>
+          <!-- Right Finial Knob -->
+          <div class="w-5 h-5 rounded-full bg-gradient-to-br from-goldLight via-gold to-goldDark shadow-md border border-amber-900/20"></div>
+        </div>
+
+        <!-- Unrolling Scroll Body -->
+        <div
+          id="scrollParchment"
+          class="scroll-parchment mx-3 bg-gradient-to-b from-[#FDF9F1] via-[#FBF5E8] to-[#F7ECDA] border-x-2 border-gold/70 shadow-xl px-5 text-center relative"
+        >
+          <!-- Rose Corner Accents Inside Scroll -->
+          <svg class="w-10 h-10 text-wine/25 absolute top-2 left-2" viewBox="0 0 60 60" fill="currentColor">
+            <circle cx="20" cy="20" r="14" />
+            <circle cx="32" cy="14" r="9" opacity="0.6" />
+            <circle cx="14" cy="32" r="9" opacity="0.6" />
+          </svg>
+          <svg class="w-10 h-10 text-wine/25 absolute top-2 right-2" viewBox="0 0 60 60" fill="currentColor">
+            <circle cx="40" cy="20" r="14" />
+            <circle cx="28" cy="14" r="9" opacity="0.6" />
+            <circle cx="46" cy="32" r="9" opacity="0.6" />
+          </svg>
+
+          <!-- Inner Gold Border Box -->
+          <div class="border border-gold/60 rounded-xl p-4 bg-ivory/60">
+            <!-- Small Ganesh Ji Emblem -->
+            <svg viewBox="0 0 120 120" class="w-10 h-10 mx-auto text-wine mb-1.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+              <path d="M48 24 Q60 12 72 24" stroke="#D4AF37" />
+              <path d="M42 42 C24 38, 22 66, 40 68" />
+              <path d="M78 42 C96 38, 98 66, 80 68" />
+              <path d="M43 44 Q60 35 77 44" />
+              <path d="M56 54 C56 72, 48 82, 38 78" />
+              <path d="M34 92 Q60 104 86 92" stroke="#D4AF37" />
+            </svg>
+
+            <p class="text-[10px] uppercase tracking-[0.25em] text-goldDark font-semibold">
+              Wedding Ceremony
+            </p>
+            <h3 class="font-serif text-2xl font-bold text-wine mt-1">
+              Wednesday, 23rd December 2026
+            </h3>
+
+            <div class="w-20 h-[1px] bg-gold/60 mx-auto my-3"></div>
+
+            <p class="text-xs uppercase tracking-[0.2em] text-wine/75 font-semibold">
+              Shubh Muhurtham
+            </p>
+            <p class="font-serif text-xl font-bold text-wineDark mt-0.5">
+              Night 3:17 AM
+            </p>
+            <p class="text-[11px] italic text-wine/80 mt-0.5">
+              (Early hours of Thursday, 24th December)
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Golden Rod & Pull Tassel Handle -->
+        <div class="relative z-20 flex flex-col items-center">
+          <div class="w-full flex items-center justify-between">
+            <div class="w-4 h-4 rounded-full bg-gradient-to-br from-goldLight via-gold to-goldDark shadow"></div>
+            <div class="flex-1 h-3 bg-gradient-to-b from-goldLight via-gold to-goldDark shadow-md rounded-sm"></div>
+            <div class="w-4 h-4 rounded-full bg-gradient-to-br from-goldLight via-gold to-goldDark shadow"></div>
+          </div>
+
+          <!-- Interactive Tassel & Animated Finger Hint -->
+          <div
+            id="tasselControl"
+            role="button"
+            tabindex="0"
+            aria-label="Pull or tap tassel to reveal wedding date"
+            class="tassel-handle flex flex-col items-center pt-0.5 pb-2 px-6"
+          >
+            <!-- Silk & Gold Tassel SVG -->
+            <svg class="w-10 h-16 drop-shadow-md" viewBox="0 0 40 68" fill="none">
+              <line x1="20" y1="0" x2="20" y2="14" stroke="#B8860B" stroke-width="2.5" />
+              <circle cx="20" cy="17" r="5" fill="#D4AF37" stroke="#78350F" stroke-width="1" />
+              <path d="M13 22 L27 22 L31 62 L9 62 Z" fill="#6E1F2F" />
+              <line x1="15" y1="24" x2="12" y2="62" stroke="#D4AF37" stroke-width="1.2" />
+              <line x1="20" y1="24" x2="20" y2="62" stroke="#F3E5AB" stroke-width="1.2" />
+              <line x1="25" y1="24" x2="28" y2="62" stroke="#D4AF37" stroke-width="1.2" />
+              <rect x="12" y="21" width="16" height="4" rx="2" fill="#D4AF37" />
+            </svg>
+
+            <!-- Hint Label with Animated Finger -->
+            <div id="tasselHintBox" class="flex items-center gap-1.5 rounded-full bg-wine/10 border border-wine/20 px-3.5 py-1 mt-1">
+              <span class="finger-hint text-base leading-none" aria-hidden="true">👆</span>
+              <span class="text-[11px] font-semibold text-wine tracking-wide">
+                Pull or tap tassel to reveal date
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Countdown Timer & Add to Calendar -->
+      <div class="mt-8 bg-ivory/90 backdrop-blur-sm border border-gold/50 rounded-2xl p-5 shadow-lg text-center max-w-sm mx-auto">
+        <p class="text-[11px] uppercase tracking-[0.22em] text-goldDark font-semibold mb-3">
+          Counting Down to the Celebrations
+        </p>
+
+        <div class="grid grid-cols-4 gap-2 sm:gap-3" id="countdownGrid">
+          <div class="rounded-xl bg-blush/70 border border-gold/40 py-2.5 px-1">
+            <span id="cdDays" class="block font-serif text-2xl sm:text-3xl font-bold text-wine">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-wine/75 font-medium">Days</span>
+          </div>
+          <div class="rounded-xl bg-blush/70 border border-gold/40 py-2.5 px-1">
+            <span id="cdHours" class="block font-serif text-2xl sm:text-3xl font-bold text-wine">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-wine/75 font-medium">Hours</span>
+          </div>
+          <div class="rounded-xl bg-blush/70 border border-gold/40 py-2.5 px-1">
+            <span id="cdMins" class="block font-serif text-2xl sm:text-3xl font-bold text-wine">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-wine/75 font-medium">Mins</span>
+          </div>
+          <div class="rounded-xl bg-blush/70 border border-gold/40 py-2.5 px-1">
+            <span id="cdSecs" class="block font-serif text-2xl sm:text-3xl font-bold text-wine">00</span>
+            <span class="text-[10px] uppercase tracking-wider text-wine/75 font-medium">Secs</span>
+          </div>
+        </div>
+
+        <!-- Add to Calendar Button -->
+        <button
+          id="addCalendarBtn"
+          type="button"
+          class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-wine text-goldLight py-3 px-5 text-xs uppercase tracking-[0.18em] font-semibold shadow-md border border-gold/50 hover:bg-wineDark active:scale-[0.98] transition"
+        >
+          <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span>Add to Calendar</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4: WEDDING FESTIVITIES (SWIPEABLE 3D CARD CAROUSEL)
+         ===================================================================== -->
+    <section id="festivitiesSection" class="py-12 px-4 relative">
+      <div class="text-center mb-6">
+        <p class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Join Us In Joy</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wine mt-1">Wedding Festivities</h2>
+        <p class="text-xs text-wine/70 mt-1">Swipe cards to explore each celebration</p>
+      </div>
+
+      <!-- 3D Carousel Container -->
+      <div id="festivitiesCarousel" class="carousel-viewport max-w-sm mx-auto">
+        <div id="festivitiesTrack" class="carousel-track">
+
+          <!-- CARD 1: WEDDING LUNCH -->
+          <div class="carousel-slide">
+            <article class="rounded-3xl bg-ivory border-2 border-gold/60 shadow-xl overflow-hidden flex flex-col">
+              <!-- Illustrated Scene Header -->
+              <div class="h-36 bg-gradient-to-br from-[#FBF0D9] via-[#F7E0B5] to-[#EED09A] relative flex items-center justify-center p-4 border-b border-gold/40">
+                <!-- Banana Leaf & Festive Feast Illustration -->
+                <svg class="w-40 h-28 drop-shadow-sm" viewBox="0 0 180 110" fill="none">
+                  <!-- Decorative Toran Arch -->
+                  <path d="M10 15 Q90 35 170 15" stroke="#B45309" stroke-width="2" stroke-dasharray="4 4" />
+                  <!-- Banana Leaf Platter -->
+                  <path d="M30 68 C55 46, 125 46, 150 68 C125 88, 55 88, 30 68 Z" fill="#2E7D32" />
+                  <path d="M32 68 L148 68" stroke="#81C784" stroke-width="2" />
+                  <!-- Traditional Brass Bowls & Sweets -->
+                  <circle cx="72" cy="60" r="8" fill="#F59E0B" stroke="#FFF8E1" stroke-width="1.5" />
+                  <circle cx="92" cy="58" r="9" fill="#D97706" stroke="#FFF8E1" stroke-width="1.5" />
+                  <circle cx="112" cy="61" r="7.5" fill="#FBBF24" stroke="#FFF8E1" stroke-width="1.5" />
+                  <!-- Brass Kalash -->
+                  <ellipse cx="90" cy="92" rx="14" ry="8" fill="#D4AF37" />
+                </svg>
+                <span class="absolute top-3 right-3 rounded-full bg-wine text-goldLight text-[10px] uppercase tracking-widest px-3 py-1 font-semibold">
+                  01 / 03
+                </span>
+              </div>
+
+              <!-- Card Details -->
+              <div class="p-6 text-center">
+                <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 text-amber-700 border border-amber-300 mb-2 animate-pulse">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                </div>
+
+                <h3 class="font-serif text-2xl font-bold text-wine">Wedding Lunch</h3>
+                <p class="text-xs text-wine/75 mt-1">Traditional Festive Feast</p>
+
+                <div class="mt-4 space-y-2.5 text-left bg-blush/45 rounded-2xl p-4 border border-gold/30 text-xs">
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📅</span>
+                    <div>
+                      <span class="font-semibold text-wine block">Wednesday, 23rd December 2026</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">🕛</span>
+                    <div>
+                      <span class="font-semibold text-wine block">From 12:00 PM onwards</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📍</span>
+                    <div>
+                      <span class="font-semibold text-wine block">At our residence, Vikrampuram Village</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between pt-2 border-t border-gold/30">
+                    <span class="text-wine/80 font-medium">Attire: Traditional Festive</span>
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-wine">
+                      <span class="w-3.5 h-3.5 rounded-full border border-wine/30 shadow-inner" style="background-color: #E8A317;"></span>
+                      Marigold Gold
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 2: GRAND RECEPTION -->
+          <div class="carousel-slide">
+            <article class="rounded-3xl bg-ivory border-2 border-gold/60 shadow-xl overflow-hidden flex flex-col">
+              <!-- Illustrated Scene Header -->
+              <div class="h-36 bg-gradient-to-br from-[#5B1624] via-[#6E1F2F] to-[#3B0C16] relative flex items-center justify-center p-4 border-b border-gold/50">
+                <!-- Evening Chandelier & Floral Stage Illustration -->
+                <svg class="w-40 h-28" viewBox="0 0 180 110" fill="none">
+                  <!-- Fairy Lights -->
+                  <path d="M15 12 Q90 36 165 12" stroke="#F3E5AB" stroke-width="1.5" />
+                  <circle cx="45" cy="21" r="2.5" fill="#FDE047" />
+                  <circle cx="90" cy="24" r="3" fill="#FDE047" />
+                  <circle cx="135" cy="21" r="2.5" fill="#FDE047" />
+                  <!-- Royal Archway -->
+                  <path d="M48 96 L48 54 Q90 28 132 54 L132 96" stroke="#D4AF37" stroke-width="2.5" />
+                  <!-- Twin Floral Urns -->
+                  <circle cx="48" cy="92" r="8" fill="#E11D48" />
+                  <circle cx="132" cy="92" r="8" fill="#E11D48" />
+                  <!-- Couple Silhouette Hearts -->
+                  <path d="M90 68 C86 62, 78 64, 78 70 C78 76, 90 83, 90 83 C90 83, 102 76, 102 70 C102 64, 94 62, 90 68 Z" fill="#D4AF37" />
+                </svg>
+                <span class="absolute top-3 right-3 rounded-full bg-gold text-wineDark text-[10px] uppercase tracking-widest px-3 py-1 font-bold">
+                  02 / 03
+                </span>
+              </div>
+
+              <!-- Card Details -->
+              <div class="p-6 text-center">
+                <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-wine/10 text-wine border border-wine/30 mb-2 animate-pulse">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </div>
+
+                <h3 class="font-serif text-2xl font-bold text-wine">Grand Reception</h3>
+                <p class="text-xs text-wine/75 mt-1">Evening Celebration &amp; Blessings</p>
+
+                <div class="mt-4 space-y-2.5 text-left bg-blush/45 rounded-2xl p-4 border border-gold/30 text-xs">
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📅</span>
+                    <div>
+                      <span class="font-semibold text-wine block">Wednesday, 23rd December 2026</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">🕖</span>
+                    <div>
+                      <span class="font-semibold text-wine block">Starts at 7:00 PM</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📍</span>
+                    <div>
+                      <span class="font-semibold text-wine block">At our residence, Vikrampuram Village</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between pt-2 border-t border-gold/30">
+                    <span class="text-wine/80 font-medium">Attire: Evening Ethnic</span>
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-wine">
+                      <span class="w-3.5 h-3.5 rounded-full border border-gold shadow-inner" style="background-color: #6E1F2F;"></span>
+                      Royal Wine
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 3: WEDDING MUHURTHAM -->
+          <div class="carousel-slide">
+            <article class="rounded-3xl bg-ivory border-2 border-gold/60 shadow-xl overflow-hidden flex flex-col">
+              <!-- Illustrated Scene Header -->
+              <div class="h-36 bg-gradient-to-br from-[#FDE8E8] via-[#F9D2D2] to-[#F3B8B8] relative flex items-center justify-center p-4 border-b border-gold/40">
+                <!-- Sacred Mandapam & Agni Fire Illustration -->
+                <svg class="w-40 h-28" viewBox="0 0 180 110" fill="none">
+                  <!-- Mandapam Pillars & Roof -->
+                  <polygon points="35,34 90,12 145,34" fill="#6E1F2F" stroke="#D4AF37" stroke-width="2" />
+                  <rect x="46" y="34" width="6" height="62" fill="#D4AF37" />
+                  <rect x="128" y="34" width="6" height="62" fill="#D4AF37" />
+                  <!-- Sacred Agni Kundam -->
+                  <polygon points="74,96 106,96 100,82 80,82" fill="#9A3412" />
+                  <path d="M90 80 C82 70, 86 58, 90 52 C95 60, 99 70, 90 80 Z" fill="#F59E0B" />
+                  <path d="M90 80 C86 73, 88 66, 90 62 C93 67, 94 73, 90 80 Z" fill="#FEF08A" />
+                </svg>
+                <span class="absolute top-3 right-3 rounded-full bg-wine text-goldLight text-[10px] uppercase tracking-widest px-3 py-1 font-semibold">
+                  03 / 03
+                </span>
+              </div>
+
+              <!-- Card Details -->
+              <div class="p-6 text-center">
+                <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 text-rose-700 border border-rose-300 mb-2 animate-pulse">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                  </svg>
+                </div>
+
+                <h3 class="font-serif text-2xl font-bold text-wine">Wedding Muhurtham</h3>
+                <p class="text-xs text-wine/75 mt-1">Sumuhurtham &amp; Sacred Vows</p>
+
+                <div class="mt-4 space-y-2.5 text-left bg-blush/45 rounded-2xl p-4 border border-gold/30 text-xs">
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📅</span>
+                    <div>
+                      <span class="font-semibold text-wine block">Wednesday, 23rd December 2026</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">🌙</span>
+                    <div>
+                      <span class="font-semibold text-wine block">Night 3:17 AM (Early hours of Thursday)</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <span class="text-goldDark font-bold">📍</span>
+                    <div>
+                      <span class="font-semibold text-wine block">At our residence, Vikrampuram Village</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between pt-2 border-t border-gold/30">
+                    <span class="text-wine/80 font-medium">Attire: Traditional Silk</span>
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-wine">
+                      <span class="w-3.5 h-3.5 rounded-full border border-wine/30 shadow-inner" style="background-color: #C83E3B;"></span>
+                      Vermilion Red
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- Carousel Controls & Dots -->
+        <div class="flex items-center justify-center gap-4 mt-5">
+          <button
+            id="prevFestivityBtn"
+            type="button"
+            aria-label="Previous festivity"
+            class="w-9 h-9 rounded-full bg-ivory border border-gold/60 text-wine flex items-center justify-center shadow hover:bg-blush active:scale-95 transition"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <div id="festivitiesDots" class="flex items-center gap-2">
+            <button type="button" aria-label="Slide 1" class="w-6 h-2 rounded-full bg-wine transition-all"></button>
+            <button type="button" aria-label="Slide 2" class="w-2 h-2 rounded-full bg-wine/30 transition-all"></button>
+            <button type="button" aria-label="Slide 3" class="w-2 h-2 rounded-full bg-wine/30 transition-all"></button>
+          </div>
+
+          <button
+            id="nextFestivityBtn"
+            type="button"
+            aria-label="Next festivity"
+            class="w-9 h-9 rounded-full bg-ivory border border-gold/60 text-wine flex items-center justify-center shadow hover:bg-blush active:scale-95 transition"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 5: OUR STORY / SACRED VOWS KEEPSAKE CAROUSEL
+         ===================================================================== -->
+    <section id="storySection" class="py-10 px-5 relative">
+      <div class="text-center mb-6">
+        <p class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Two Hearts, One Soul</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wine mt-1">Sacred Bond</h2>
+      </div>
+
+      <div id="storyCarousel" class="carousel-viewport max-w-sm mx-auto">
+        <div id="storyTrack" class="carousel-track">
+          <!-- Keepsake Card 1 -->
+          <div class="carousel-slide">
+            <div class="rounded-3xl bg-gradient-to-b from-ivory to-blush/60 border border-gold/50 p-6 text-center shadow-md">
+              <div class="w-20 h-20 mx-auto rounded-full bg-wine/5 border border-gold/60 flex items-center justify-center mb-4">
+                <!-- Jeelakarra Bellam & Mangalsutra Motif -->
+                <svg class="w-12 h-12 text-wine" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 20 Q32 46 50 20" stroke="#D4AF37" stroke-width="2.2" />
+                  <circle cx="28" cy="36" r="5" fill="#F3E5AB" stroke="#D4AF37" />
+                  <circle cx="36" cy="36" r="5" fill="#F3E5AB" stroke="#D4AF37" />
+                  <circle cx="32" cy="42" r="2.5" fill="#C83E3B" stroke="none" />
+                </svg>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-wine">Sumuhurtham</h3>
+              <p class="text-xs text-wineDark/80 mt-2 leading-relaxed italic">
+                "At the auspicious hour when stars align, two families become one and two hearts promise a lifetime of togetherness."
+              </p>
+            </div>
+          </div>
+
+          <!-- Keepsake Card 2 -->
+          <div class="carousel-slide">
+            <div class="rounded-3xl bg-gradient-to-b from-ivory to-blush/60 border border-gold/50 p-6 text-center shadow-md">
+              <div class="w-20 h-20 mx-auto rounded-full bg-wine/5 border border-gold/60 flex items-center justify-center mb-4">
+                <!-- Saptapadi Seven Steps Motif -->
+                <svg class="w-12 h-12 text-wine" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 44 C22 30, 42 30, 48 44" stroke="#D4AF37" stroke-width="2" />
+                  <circle cx="20" cy="36" r="2.5" fill="#6E1F2F" />
+                  <circle cx="26" cy="31" r="2.5" fill="#6E1F2F" />
+                  <circle cx="32" cy="29" r="3" fill="#D4AF37" />
+                  <circle cx="38" cy="31" r="2.5" fill="#6E1F2F" />
+                  <circle cx="44" cy="36" r="2.5" fill="#6E1F2F" />
+                </svg>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-wine">Saptapadi</h3>
+              <p class="text-xs text-wineDark/80 mt-2 leading-relaxed italic">
+                "Seven sacred steps around the holy fire—walking hand in hand through joy, prosperity, strength, and eternal friendship."
+              </p>
+            </div>
+          </div>
+
+          <!-- Keepsake Card 3 -->
+          <div class="carousel-slide">
+            <div class="rounded-3xl bg-gradient-to-b from-ivory to-blush/60 border border-gold/50 p-6 text-center shadow-md">
+              <div class="w-20 h-20 mx-auto rounded-full bg-wine/5 border border-gold/60 flex items-center justify-center mb-4">
+                <!-- Talambralu Blessings Motif -->
+                <svg class="w-12 h-12 text-wine" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M32 16 C25 10, 14 16, 18 26 C22 35, 32 44, 32 44 C32 44, 42 35, 46 26 C50 16, 39 10, 32 16 Z" fill="#F8E8E8" stroke="#D4AF37" />
+                  <circle cx="32" cy="27" r="3" fill="#6E1F2F" />
+                </svg>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-wine">Aashirvadam</h3>
+              <p class="text-xs text-wineDark/80 mt-2 leading-relaxed italic">
+                "Your presence and heartfelt blessings are the greatest gift as Kuladeep &amp; Keerthana begin their married life."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div id="storyDots" class="flex items-center justify-center gap-2 mt-4">
+          <button type="button" aria-label="Story 1" class="w-6 h-2 rounded-full bg-wine transition-all"></button>
+          <button type="button" aria-label="Story 2" class="w-2 h-2 rounded-full bg-wine/30 transition-all"></button>
+          <button type="button" aria-label="Story 3" class="w-2 h-2 rounded-full bg-wine/30 transition-all"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 6: GRAND RECEPTION SPOTLIGHT CARD (WINE & GOLD WITH BLOOMING FLOWERS)
+         ===================================================================== -->
+    <section id="receptionSection" class="py-10 px-5 relative">
+      <div class="max-w-sm mx-auto rounded-3xl bg-gradient-to-br from-[#7A2335] via-[#6E1F2F] to-[#47101C] text-ivory border-2 border-gold/75 shadow-2xl p-7 text-center relative overflow-hidden">
+        <!-- Twinkling Gold Sparkles -->
+        <span class="sparkle-dot absolute top-6 left-12 w-1.5 h-1.5 rounded-full bg-goldLight"></span>
+        <span class="sparkle-dot absolute top-14 right-10 w-2 h-2 rounded-full bg-gold" style="animation-delay: 0.9s;"></span>
+        <span class="sparkle-dot absolute bottom-12 left-10 w-1.5 h-1.5 rounded-full bg-goldLight" style="animation-delay: 1.7s;"></span>
+        <span class="sparkle-dot absolute bottom-8 right-16 w-1.5 h-1.5 rounded-full bg-gold" style="animation-delay: 2.3s;"></span>
+
+        <!-- Blooming Floral Rose Corner 1 (Top-Left) -->
+        <svg class="w-24 h-24 absolute -top-4 -left-4 text-gold/30 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="30" cy="30" r="24" />
+          <circle cx="52" cy="22" r="14" opacity="0.7" />
+          <circle cx="22" cy="52" r="14" opacity="0.7" />
+        </svg>
+
+        <!-- Blooming Floral Rose Corner 2 (Bottom-Right) -->
+        <svg class="w-24 h-24 absolute -bottom-4 -right-4 text-gold/30 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+          <circle cx="70" cy="70" r="24" />
+          <circle cx="48" cy="78" r="14" opacity="0.7" />
+          <circle cx="78" cy="48" r="14" opacity="0.7" />
+        </svg>
+
+        <div class="relative z-10 border border-gold/45 rounded-2xl p-5 bg-wineDark/30">
+          <p class="text-[10px] uppercase tracking-[0.28em] text-goldLight font-semibold">
+            Evening Gala
+          </p>
+          <h2 class="font-serif text-3xl font-bold gold-gradient-text mt-1">
+            Grand Reception
+          </h2>
+
+          <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-3.5"></div>
+
+          <p class="font-serif text-lg text-ivory font-medium">
+            Wednesday, 23rd December 2026
+          </p>
+          <p class="text-sm text-goldLight font-semibold mt-1">
+            Starts at 7:00 PM onwards
+          </p>
+          <p class="text-xs text-ivory/85 mt-3 leading-relaxed">
+            At our residence, Vikrampuram Village,<br />
+            Komarada Mandal, Parvathipuram Manyam District
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 7: VENUE & ILLUSTRATED LOCATION MAP CARD
+         ===================================================================== -->
+    <section id="locationSection" class="py-10 px-5 relative">
+      <div class="text-center mb-6">
+        <p class="text-[11px] uppercase tracking-[0.26em] text-goldDark font-semibold">Getting There</p>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wine mt-1">Wedding Venue</h2>
+      </div>
+
+      <div class="max-w-sm mx-auto rounded-3xl bg-ivory border-2 border-gold/60 shadow-xl overflow-hidden">
+        <!-- Tappable Illustrated Map Card -->
+        <a
+          href="https://maps.app.goo.gl/LYAWwFRAdVzNzsHj9?g_st=ac"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open wedding venue in Google Maps"
+          class="block relative h-44 bg-gradient-to-br from-[#F7EFE2] via-[#F3E5D0] to-[#EAD7B7] overflow-hidden group"
+        >
+          <!-- Illustrated Map Grid & Animated Route -->
+          <svg class="w-full h-full" viewBox="0 0 360 180" fill="none">
+            <!-- Subtle Map Roads -->
+            <path d="M-10 40 L370 65" stroke="#DFC8A2" stroke-width="6" />
+            <path d="M70 -10 L110 190" stroke="#DFC8A2" stroke-width="6" />
+            <path d="M250 -10 L220 190" stroke="#DFC8A2" stroke-width="5" />
+            <path d="M-10 135 L370 115" stroke="#DFC8A2" stroke-width="5" />
+
+            <!-- Decorative Green Village Trees -->
+            <circle cx="52" cy="76" r="8" fill="#A3B18A" opacity="0.55" />
+            <circle cx="145" cy="45" r="7" fill="#A3B18A" opacity="0.55" />
+            <circle cx="305" cy="142" r="9" fill="#A3B18A" opacity="0.55" />
+
+            <!-- Animated Route Path -->
+            <path
+              d="M42 148 Q115 132 145 96 T258 64"
+              stroke="#6E1F2F"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              class="animated-route"
+            />
+
+            <!-- Start Dot -->
+            <circle cx="42" cy="148" r="5" fill="#D4AF37" stroke="#6E1F2F" stroke-width="2" />
+
+            <!-- Pulsing Destination Pin -->
+            <g transform="translate(258, 64)">
+              <circle cx="0" cy="0" r="18" fill="#6E1F2F" opacity="0.18">
+                <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <path
+                d="M0 -24 C-10 -24, -17 -16, -17 -7 C-17 5, 0 20, 0 20 C0 20, 17 5, 17 -7 C17 -16, 10 -24, 0 -24 Z"
+                fill="#6E1F2F"
+                stroke="#F3E5AB"
+                stroke-width="2"
+              />
+              <circle cx="0" cy="-8" r="5" fill="#D4AF37" />
+            </g>
+          </svg>
+
+          <!-- Tap Badge -->
+          <span class="absolute bottom-3 right-3 rounded-full bg-ivory/95 text-wine border border-gold/60 px-3 py-1 text-[10px] font-semibold shadow-sm group-hover:bg-wine group-hover:text-goldLight transition">
+            Tap map to open ↗
+          </span>
+        </a>
+
+        <!-- Venue Address & Action Buttons -->
+        <div class="p-6 text-center">
+          <h3 class="font-serif text-xl font-bold text-wine">At Our Residence</h3>
+          <p id="venueAddressText" class="text-xs sm:text-sm text-wineDark/85 mt-2 leading-relaxed">
+            Vikrampuram Village, Komarada Mandal,<br />
+            Parvathipuram Manyam District
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 mt-5">
+            <a
+              href="https://maps.app.goo.gl/LYAWwFRAdVzNzsHj9?g_st=ac"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-wine text-goldLight py-3 px-3 text-xs font-semibold shadow-md border border-gold/50 hover:bg-wineDark active:scale-95 transition"
+            >
+              <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Get Directions</span>
+            </a>
+
+            <button
+              id="copyAddressBtn"
+              type="button"
+              class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-blush text-wine py-3 px-3 text-xs font-semibold border border-gold/60 hover:bg-blushDeep active:scale-95 transition"
+            >
+              <svg class="w-4 h-4 text-goldDark shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+              </svg>
+              <span>Copy Address</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 8: CLOSING & BEST COMPLIMENTS
+         ===================================================================== -->
+    <footer class="pt-10 pb-16 px-5 text-center relative">
+      <!-- Gold Ganesh Ji Emblem -->
+      <div class="w-14 h-14 mx-auto rounded-full bg-ivory border border-gold/70 shadow-sm flex items-center justify-center p-2 mb-3">
+        <svg viewBox="0 0 120 120" class="w-full h-full text-wine" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+          <path d="M48 24 Q60 12 72 24" stroke="#D4AF37" />
+          <path d="M42 42 C24 38, 22 66, 40 68" />
+          <path d="M78 42 C96 38, 98 66, 80 68" />
+          <path d="M43 44 Q60 35 77 44" />
+          <path d="M56 54 C56 72, 48 82, 38 78" />
+          <path d="M34 92 Q60 104 86 92" stroke="#D4AF37" />
+        </svg>
+      </div>
+
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-wine">
+        We can't wait to celebrate with you
+      </h2>
+
+      <!-- With Best Compliments Box -->
+      <div class="max-w-sm mx-auto mt-6 rounded-2xl bg-ivory/90 border border-gold/55 p-5 shadow-md">
+        <p class="text-[10px] uppercase tracking-[0.24em] text-goldDark font-bold mb-2">
+          With Best Compliments From
+        </p>
+        <p class="text-xs sm:text-sm text-wineDark/90 leading-relaxed font-medium">
+          Sri N. Rama Rao, Sekhar, T. Venkatanaidu,<br />
+          T. Simhachalam, T. Pakeerunaidu,<br />
+          I. Nageswara Rao and Near &amp; Dear
+        </p>
+      </div>
+
+      <!-- Standard Warm Family Closing -->
+      <div class="mt-7">
+        <p class="font-serif italic text-lg text-wine">
+          With love and warm regards,
+        </p>
+        <p class="font-serif text-xl font-bold text-wineDark mt-0.5">
+          The Netula Family
+        </p>
+      </div>
+
+      <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-7"></div>
+
+      <!-- Creator Credit -->
+      <p class="text-[10px] tracking-[0.2em] uppercase text-wine/50">
+        Interactive Wedding Invitation • @sainithintecg
+      </p>
+    </footer>
+  </main>
+
+  <!-- =====================================================================
+       JAVASCRIPT: 3D BOOK, AUDIO FALLBACK, PULL SCROLL, CAROUSEL & PETALS
+       ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* -------------------------------------------------------------------
+         1. PRELOADER & 3D BOOK OPENING INTERACTION
+         ------------------------------------------------------------------- */
+      const bookOverlay = document.getElementById('bookOverlay');
+      const bookLoader = document.getElementById('bookLoader');
+      const bookInteractiveWrapper = document.getElementById('bookInteractiveWrapper');
+      const bookStage = document.getElementById('bookStage');
+      const bookCover = document.getElementById('bookCover');
+      const tapBookBtn = document.getElementById('tapBookBtn');
+
+      let isBookOpened = false;
+
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          bookLoader.classList.add('hidden');
+          bookInteractiveWrapper.classList.remove('hidden');
+          bookInteractiveWrapper.classList.add('flex');
+        }, 450);
+      });
+
+      function openInvitationBook() {
+        if (isBookOpened) return;
+        isBookOpened = true;
+
+        // Swing cover open in 3D & zoom camera slightly
+        bookCover.classList.add('swing-open');
+        bookStage.classList.add('zooming');
+
+        // Start music gracefully with fade-in
+        startWeddingMusic();
+
+        // Trigger celebratory rose petal shower
+        spawnBurstPetals(38);
+
+        // Reveal main invitation page
+        setTimeout(() => {
+          bookOverlay.classList.add('opened');
+        }, 950);
+      }
+
+      bookStage.addEventListener('click', openInvitationBook);
+      tapBookBtn.addEventListener('click', openInvitationBook);
+      bookStage.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openInvitationBook();
+        }
+      });
+
+      /* -------------------------------------------------------------------
+         2. AUDIO CONTROLLER (MP3 WITH GRACEFUL WEB AUDIO CHIME FALLBACK)
+         ------------------------------------------------------------------- */
+      const bgMusic = document.getElementById('bgMusic');
+      const musicToggleBtn = document.getElementById('musicToggleBtn');
+      const musicLabel = document.getElementById('musicLabel');
+      const musicEqualizer = document.getElementById('musicEqualizer');
+
+      let isPlaying = false;
+      let usingSynthFallback = false;
+      let audioCtx = null;
+      let synthInterval = null;
+
+      function updateMusicUI(playing) {
+        isPlaying = playing;
+        musicToggleBtn.classList.remove('hidden');
+        musicToggleBtn.classList.add('flex');
+        musicLabel.textContent = playing ? 'Music On' : 'Play Music';
+        musicEqualizer.style.opacity = playing ? '1' : '0.35';
+      }
+
+      // Gentle Indian classical / tanpura-inspired chime fallback if song.mp3 isn't in preview folder
+      function startSynthChimes() {
+        if (synthInterval) return;
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = audioCtx || new AudioContext();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+
+          // Raga Mohanam / Pentatonic auspicious notes (Sa Re Ga Pa Dha Sa)
+          const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
+          let idx = 0;
+
+          const playPluck = () => {
+            if (!isPlaying || !audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(notes[idx % notes.length], audioCtx.currentTime);
+            idx++;
+
+            gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.045, audioCtx.currentTime + 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.2);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 2.3);
+          };
+
+          playPluck();
+          synthInterval = setInterval(playPluck, 1800);
+          updateMusicUI(true);
+        } catch (err) {
+          updateMusicUI(false);
+        }
+      }
+
+      function stopSynthChimes() {
+        if (synthInterval) {
+          clearInterval(synthInterval);
+          synthInterval = null;
+        }
+      }
+
+      function startWeddingMusic() {
+        bgMusic.volume = 0.05;
+        const playPromise = bgMusic.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              usingSynthFallback = false;
+              updateMusicUI(true);
+              // Smooth fade-in
+              let vol = 0.05;
+              const fade = setInterval(() => {
+                if (vol < 0.65 && isPlaying) {
+                  vol = Math.min(0.65, vol + 0.05);
+                  bgMusic.volume = vol;
+                } else {
+                  clearInterval(fade);
+                }
+              }, 160);
+            })
+            .catch(() => {
+              // Fallback to gentle synthesized chimes if song.mp3 file is not yet attached in preview
+              usingSynthFallback = true;
+              startSynthChimes();
+            });
+        } else {
+          usingSynthFallback = true;
+          startSynthChimes();
+        }
+      }
+
+      musicToggleBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          if (usingSynthFallback) {
+            isPlaying = false;
+            stopSynthChimes();
+          } else {
+            bgMusic.pause();
+          }
+          updateMusicUI(false);
+        } else {
+          if (usingSynthFallback) {
+            isPlaying = true;
+            startSynthChimes();
+          } else {
+            bgMusic.play().then(() => updateMusicUI(true)).catch(() => {
+              usingSynthFallback = true;
+              isPlaying = true;
+              startSynthChimes();
+            });
+          }
+        }
+      });
+
+      /* -------------------------------------------------------------------
+         3. PULL-TO-REVEAL GOLDEN SCROLL (SAVE THE DATE)
+         ------------------------------------------------------------------- */
+      const scrollParchment = document.getElementById('scrollParchment');
+      const tasselControl = document.getElementById('tasselControl');
+      const tasselHintBox = document.getElementById('tasselHintBox');
+      let isScrollRevealed = false;
+      let dragStartY = 0;
+      let isDraggingTassel = false;
+
+      function revealSaveTheDateScroll() {
+        if (isScrollRevealed) return;
+        isScrollRevealed = true;
+        scrollParchment.classList.add('unrolled');
+        tasselHintBox.innerHTML = '<span class="text-[11px] font-semibold text-goldDark tracking-wide">✨ Date Revealed ✨</span>';
+        // Celebration petal & gold confetti burst
+        spawnBurstPetals(50, true);
+      }
+
+      tasselControl.addEventListener('click', revealSaveTheDateScroll);
+      tasselControl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          revealSaveTheDateScroll();
+        }
+      });
+
+      // Touch & Pointer Dragging on Tassel
+      tasselControl.addEventListener('touchstart', (e) => {
+        dragStartY = e.touches[0].clientY;
+        isDraggingTassel = true;
+      }, { passive: true });
+
+      tasselControl.addEventListener('touchmove', (e) => {
+        if (!isDraggingTassel || isScrollRevealed) return;
+        const deltaY = e.touches[0].clientY - dragStartY;
+        if (deltaY > 22) {
+          revealSaveTheDateScroll();
+          isDraggingTassel = false;
+        }
+      }, { passive: true });
+
+      tasselControl.addEventListener('touchend', () => {
+        isDraggingTassel = false;
+      });
+
+      /* -------------------------------------------------------------------
+         4. LIVE COUNTDOWN TIMER (DEC 23, 2026) & .ICS CALENDAR DOWNLOAD
+         ------------------------------------------------------------------- */
+      const targetWeddingTime = new Date('2026-12-23T12:00:00+05:30').getTime();
+      const cdDays = document.getElementById('cdDays');
+      const cdHours = document.getElementById('cdHours');
+      const cdMins = document.getElementById('cdMins');
+      const cdSecs = document.getElementById('cdSecs');
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = Math.max(0, targetWeddingTime - now);
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / 1000 / 60) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        cdDays.textContent = String(days).padStart(2, '0');
+        cdHours.textContent = String(hours).padStart(2, '0');
+        cdMins.textContent = String(mins).padStart(2, '0');
+        cdSecs.textContent = String(secs).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Add to Calendar (.ics download)
+      const addCalendarBtn = document.getElementById('addCalendarBtn');
+      addCalendarBtn.addEventListener('click', () => {
+        const icsContent = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Netula Kuladeep & Kimidi Keerthana Wedding//EN',
+          'BEGIN:VEVENT',
+          'UID:kuladeep-keerthana-wedding-2026@invitation',
+          'DTSTAMP:20261124T120000Z',
+          'DTSTART:20261223T063000Z',
+          'DTEND:20261223T223000Z',
+          'SUMMARY:Wedding: Netula Kuladeep & Kimidi Keerthana',
+          'DESCRIPTION:Wedding Lunch (12:00 PM), Grand Reception (7:00 PM), and Shubh Muhurtham (Night 3:17 AM / Early hours of Thursday).',
+          'LOCATION:Vikrampuram Village, Komarada Mandal, Parvathipuram Manyam District',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Kuladeep_Keerthana_Wedding.ics');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        showToast('Wedding saved to calendar (.ics)!');
+      });
+
+      /* -------------------------------------------------------------------
+         5. SWIPEABLE 3D CAROUSEL HELPER (FESTIVITIES & SACRED BOND)
+         ------------------------------------------------------------------- */
+      function initSwipeCarousel({ viewportId, trackId, dotsId, prevBtnId, nextBtnId, totalSlides }) {
+        const viewport = document.getElementById(viewportId);
+        const track = document.getElementById(trackId);
+        const dotsContainer = document.getElementById(dotsId);
+        const prevBtn = prevBtnId ? document.getElementById(prevBtnId) : null;
+        const nextBtn = nextBtnId ? document.getElementById(nextBtnId) : null;
+        const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
+
+        let currentIndex = 0;
+        let startX = 0;
+        let currentDeltaX = 0;
+        let isSwiping = false;
+
+        function goToSlide(index) {
+          currentIndex = (index + totalSlides) % totalSlides;
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+          dots.forEach((dot, i) => {
+            if (i === currentIndex) {
+              dot.classList.remove('w-2', 'bg-wine/30');
+              dot.classList.add('w-6', 'bg-wine');
+            } else {
+              dot.classList.remove('w-6', 'bg-wine');
+              dot.classList.add('w-2', 'bg-wine/30');
+            }
+          });
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+        dots.forEach((dot, idx) => dot.addEventListener('click', () => goToSlide(idx)));
+
+        viewport.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isSwiping = true;
+          track.style.transition = 'none';
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+          if (!isSwiping) return;
+          currentDeltaX = e.touches[0].clientX - startX;
+          const offsetPercent = (currentDeltaX / viewport.offsetWidth) * 100;
+          track.style.transform = `translateX(calc(-${currentIndex * 100}% + ${offsetPercent}%))`;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', () => {
+          if (!isSwiping) return;
+          isSwiping = false;
+          track.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)';
+          if (currentDeltaX < -45) {
+            goToSlide(currentIndex + 1);
+          } else if (currentDeltaX > 45) {
+            goToSlide(currentIndex - 1);
+          } else {
+            goToSlide(currentIndex);
+          }
+          currentDeltaX = 0;
+        });
+      }
+
+      initSwipeCarousel({
+        viewportId: 'festivitiesCarousel',
+        trackId: 'festivitiesTrack',
+        dotsId: 'festivitiesDots',
+        prevBtnId: 'prevFestivityBtn',
+        nextBtnId: 'nextFestivityBtn',
+        totalSlides: 3
+      });
+
+      initSwipeCarousel({
+        viewportId: 'storyCarousel',
+        trackId: 'storyTrack',
+        dotsId: 'storyDots',
+        prevBtnId: null,
+        nextBtnId: null,
+        totalSlides: 3
+      });
+
+      /* -------------------------------------------------------------------
+         6. COPY ADDRESS TO CLIPBOARD WITH FALLBACK & TOAST NOTIFICATION
+         ------------------------------------------------------------------- */
+      const copyAddressBtn = document.getElementById('copyAddressBtn');
+      const toastBanner = document.getElementById('toastBanner');
+      const toastText = document.getElementById('toastText');
+      let toastTimer = null;
+
+      function showToast(message) {
+        toastText.textContent = message;
+        toastBanner.classList.remove('opacity-0', 'translate-y-4');
+        toastBanner.classList.add('opacity-100', 'translate-y-0');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBanner.classList.add('opacity-0', 'translate-y-4');
+          toastBanner.classList.remove('opacity-100', 'translate-y-0');
+        }, 2600);
+      }
+
+      copyAddressBtn.addEventListener('click', () => {
+        const fullAddress = 'Vikrampuram Village, Komarada Mandal, Parvathipuram Manyam District';
+        const tempInput = document.createElement('textarea');
+        tempInput.value = fullAddress;
+        tempInput.style.position = 'fixed';
+        tempInput.style.opacity = '0';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          showToast('Venue address copied!');
+        } catch (err) {
+          showToast('Vikrampuram Village, Komarada Mandal');
+        }
+        document.body.removeChild(tempInput);
+      });
+
+      /* -------------------------------------------------------------------
+         7. FALLING ROSE PETALS & GOLD CONFETTI PARTICLE ENGINE
+         ------------------------------------------------------------------- */
+      const canvas = document.getElementById('petalCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      function createParticle(isGoldConfetti = false) {
+        const roseColors = ['#D97B84', '#B84756', '#F2A6AE', '#9E3344'];
+        const goldColors = ['#D4AF37', '#F3E5AB', '#E5C158'];
+        return {
+          x: Math.random() * canvas.width,
+          y: -20 - Math.random() * 100,
+          size: isGoldConfetti ? 4 + Math.random() * 4 : 6 + Math.random() * 6,
+          speedY: 1.1 + Math.random() * 1.8,
+          speedX: -0.7 + Math.random() * 1.4,
+          rotation: Math.random() * 360,
+          rotSpeed: -2 + Math.random() * 4,
+          color: isGoldConfetti
+            ? goldColors[Math.floor(Math.random() * goldColors.length)]
+            : roseColors[Math.floor(Math.random() * roseColors.length)],
+          isGold: isGoldConfetti,
+          opacity: 0.75 + Math.random() * 0.25
+        };
+      }
+
+      function spawnBurstPetals(count = 30, includeGold = false) {
+        for (let i = 0; i < count; i++) {
+          particles.push(createParticle(includeGold && i % 3 === 0));
+        }
+      }
+
+      function animatePetals() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.y += p.speedY;
+          p.x += p.speedX + Math.sin(p.y * 0.02) * 0.5;
+          p.rotation += p.rotSpeed;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = p.opacity;
+          ctx.fillStyle = p.color;
+
+          if (p.isGold) {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          } else {
+            // Soft curved rose petal shape
+            ctx.beginPath();
+            ctx.moveTo(0, -p.size);
+            ctx.bezierCurveTo(p.size, -p.size, p.size, p.size, 0, p.size);
+            ctx.bezierCurveTo(-p.size, p.size, -p.size, -p.size, 0, -p.size);
+            ctx.fill();
+          }
+          ctx.restore();
+
+          if (p.y > canvas.height + 30) {
+            particles.splice(i, 1);
+          }
+        }
+
+        requestAnimationFrame(animatePetals);
+      }
+
+      animatePetals();
+
+      /* -------------------------------------------------------------------
+         8. SUBTLE PARALLAX & INTERSECTION OBSERVER PERFORMANCE GUARD
+         ------------------------------------------------------------------- */
+      const parallaxRoses = document.querySelectorAll('.parallax-rose');
+      window.addEventListener('mousemove', (e) => {
+        if (isBookOpened) return;
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+
+        parallaxRoses.forEach((rose) => {
+          const speed = parseFloat(rose.getAttribute('data-speed') || '0.03');
+          rose.style.transform = `translate3d(${dx * speed}px, ${dy * speed}px, 0)`;
+        });
+      }, { passive: true });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove('paused-anim');
+            } else {
+              entry.target.classList.add('paused-anim');
+            }
+          });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('section').forEach((sec) => observer.observe(sec));
+      }
+    })();
+  </script>
+</body>
+</html>
