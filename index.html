@@ -3,12 +3,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="0; url=./Index.html">
-    <title>Wedding Invitation</title>
-    <script>window.location.replace(new URL('./Index.html', window.location.href).href);</script>
+    <title>Netula Kuladeep &amp; Kimidi Keerthana — Wedding Invitation</title>
+    <style>
+      html, body, iframe { width: 100%; height: 100%; margin: 0; border: 0; }
+      body { overflow: hidden; }
+      iframe { display: block; }
+    </style>
   </head>
   <body>
-    <p>Opening the wedding invitation…</p>
-    <p><a href="./Index.html">Open the wedding invitation</a></p>
+    <iframe id="invitation" src="./Index.html" title="Netula Kuladeep and Kimidi Keerthana wedding invitation"></iframe>
+    <script>
+      const calendarUrl = new URL('https://calendar.google.com/calendar/render');
+      calendarUrl.searchParams.set('action', 'TEMPLATE');
+      calendarUrl.searchParams.set('text', 'Wedding: Netula Kuladeep & Kimidi Keerthana');
+      calendarUrl.searchParams.set('dates', '20261223T063000Z/20261223T223000Z');
+      calendarUrl.searchParams.set('details', 'Wedding Lunch (12:00 PM), Grand Reception (7:00 PM), and Shubh Muhurtham (3:17 AM on Thursday, 24 December).');
+      calendarUrl.searchParams.set('location', 'Vikrampuram Village, Komarada Mandal, Parvathipuram Manyam District');
+      calendarUrl.searchParams.set('ctz', 'Asia/Kolkata');
+
+      document.getElementById('invitation').addEventListener('load', function () {
+        const invitationDocument = this.contentDocument;
+        const calendarButton = invitationDocument && invitationDocument.getElementById('addCalendarBtn');
+        if (!calendarButton) return;
+
+        // Replace the download button so its existing download handler cannot run.
+        const calendarLink = invitationDocument.createElement('a');
+        calendarLink.id = calendarButton.id;
+        calendarLink.className = calendarButton.className;
+        calendarLink.innerHTML = calendarButton.innerHTML;
+        calendarLink.href = calendarUrl.href;
+        calendarLink.target = '_blank';
+        calendarLink.rel = 'noopener noreferrer';
+        calendarLink.setAttribute('aria-label', 'Add Netula and Keerthana’s wedding to Google Calendar');
+        calendarButton.replaceWith(calendarLink);
+      });
+    </script>
   </body>
 </html>
